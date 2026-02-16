@@ -60,19 +60,17 @@
             opacity: 0.8;
         }
 
-        /* Balloon styles */
+        /* Balloon image styles */
         .balloon {
             position: absolute;
             width: 50px;
             height: 70px;
-            border-radius: 50% 50% 50% 50%;
-            background: gold;
-            opacity: 0.9;
-            left: 0;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
             bottom: -100px;
             z-index: 5;
         }
-        .balloon.silver { background: silver; }
 
         /* Sparkle styles */
         .sparkle {
@@ -118,14 +116,18 @@
     <div id="sparkles"></div>
 
     <script>
-        // Create balloons
-        const colors = ['gold', 'silver'];
+        // Balloon images (hosted online or you can upload to your repo)
+        const balloonImages = [
+            'https://i.ibb.co/NLZ8Xw0/gold-balloon.png',
+            'https://i.ibb.co/Wsn4D8f/silver-balloon.png'
+        ];
+
         const balloonContainer = document.getElementById('balloons');
 
         for(let i=0; i<15; i++){
             let b = document.createElement('div');
             b.classList.add('balloon');
-            b.classList.add(colors[Math.floor(Math.random()*colors.length)]);
+            b.style.backgroundImage = `url(${balloonImages[Math.floor(Math.random()*balloonImages.length)]})`;
             b.style.left = Math.random() * 100 + 'vw';
             b.style.animation = `floatUp ${5 + Math.random()*5}s linear infinite`;
             b.style.animationDelay = `${Math.random()*5}s`;
@@ -143,10 +145,5 @@
             sparkleContainer.appendChild(s);
         }
     </script>
-</body>
-</html>            📍 Location: гр.Самоводене, 
-                  ул.Опълченска 15
-        </div>
-    </div>
 </body>
 </html>
